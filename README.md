@@ -61,3 +61,7 @@ node tools/make-voices.mjs --engine say --force  # offline, with macOS voices
 With `ELEVENLABS_API_KEY` set (in the environment or in a git-ignored `.env` file) it uses ElevenLabs; otherwise macOS `say`. The voice of each character is the `ELEVEN_CAST` table at the top of `tools/make-voices.mjs` (an ElevenLabs voice id per character). The key only needs the text-to-speech permission.
 
 The game plays them through a radio chain (high-pass + low-pass band, mid boost, light saturation, static hiss, squelch beeps) and ducks the music while someone talks. If a file is missing, or the page is opened via `file://`, it falls back to the browser's speech synthesis without the radio filter.
+
+## Credits
+
+Radio voices generated with [ElevenLabs](https://elevenlabs.io). 3D rendering by [Three.js](https://threejs.org).
