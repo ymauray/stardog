@@ -1,0 +1,7 @@
+# Normalize line endings for every text file
+* text=auto eol=lf
+
+# Binary assets
+*.m4a binary
+*.mp3 binary
+*.png binary
