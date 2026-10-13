@@ -1,5 +1,7 @@
 # StarDog
 
+[![CI](https://github.com/ymauray/stardog/actions/workflows/ci.yml/badge.svg)](https://github.com/ymauray/stardog/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Play online](https://img.shields.io/badge/play-online-ff69b4)](https://ymauray.github.io/stardog/)
+
 A StarFox-style on-rails 3D shooter in a single `index.html` (Three.js from a CDN; music and sound effects are synthesized with WebAudio).
 Pilot the Arfwing and drive the Cat Empire out of the galaxy across three missions:
 
