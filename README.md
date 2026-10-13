@@ -11,7 +11,9 @@ Finishing a mission unlocks the next one (press 1–3 on the title screen).
 
 ## Play
 
-Serve the folder (needed for the radio voices) and open it:
+**Play online: https://ymauray.github.io/stardog/**
+
+Or locally, serve the folder (needed for the radio voices) and open it:
 
 ```sh
 python3 -m http.server 8765   # then open http://localhost:8765
