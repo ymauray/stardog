@@ -1,5 +1,7 @@
 # StarDog
 
+[![CI](https://github.com/ymauray/stardog/actions/workflows/ci.yml/badge.svg)](https://github.com/ymauray/stardog/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![Play online](https://img.shields.io/badge/play-online-ff69b4)](https://ymauray.github.io/stardog/) [![repocheck](https://img.shields.io/badge/repocheck%201.3.0-100%2F100-brightgreen)](https://github.com/ymauray/repocheck)
+
 A StarFox-style on-rails 3D shooter in a single `index.html` (Three.js from a CDN; music and sound effects are synthesized with WebAudio).
 Pilot the Arfwing and drive the Cat Empire out of the galaxy across three missions:
 
@@ -63,6 +65,20 @@ node tools/make-voices.mjs --engine say --force  # offline, with macOS voices
 With `ELEVENLABS_API_KEY` set (in the environment or in a git-ignored `.env` file) it uses ElevenLabs; otherwise macOS `say`. The voice of each character is the `ELEVEN_CAST` table at the top of `tools/make-voices.mjs` (an ElevenLabs voice id per character). The key only needs the text-to-speech permission.
 
 The game plays them through a radio chain (high-pass + low-pass band, mid boost, light saturation, static hiss, squelch beeps) and ducks the music while someone talks. If a file is missing, or the page is opened via `file://`, it falls back to the browser's speech synthesis without the radio filter.
+
+## Continuous integration, deployment and releases
+
+| What | Where | When |
+| --- | --- | --- |
+| **CI** | `.github/workflows/ci.yml` runs `node tools/check.mjs`: the game script and tools parse, the dialog block is valid, every radio line used by the game exists and has its voice file | every push and pull request to `main` |
+| **Deployment** | GitHub Pages, configured as *deploy from branch* (`main`, root). GitHub builds and publishes the site itself (`pages-build-deployment`); there is no deployment workflow in the repository | every push to `main` |
+| **Releases** | `.github/workflows/release.yml` re-runs the checks and publishes a GitHub release with generated notes | pushing a `vX.Y.Z` tag (e.g. `git tag v1.0.0 && git push origin v1.0.0`) |
+
+The CI only checks; publishing the playable site is done by GitHub Pages, independently of releases. Voice files are generated locally (see *Radio voices*), never in CI, because generation needs the ElevenLabs key.
+
+## License
+
+Code under the [MIT license](LICENSE). The voice files in `voices/` were generated with ElevenLabs and remain subject to ElevenLabs' terms for the plan they were generated with (attribution, non-commercial use).
 
 ## Credits
 
