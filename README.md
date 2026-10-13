@@ -66,6 +66,20 @@ With `ELEVENLABS_API_KEY` set (in the environment or in a git-ignored `.env` fil
 
 The game plays them through a radio chain (high-pass + low-pass band, mid boost, light saturation, static hiss, squelch beeps) and ducks the music while someone talks. If a file is missing, or the page is opened via `file://`, it falls back to the browser's speech synthesis without the radio filter.
 
+## Continuous integration, deployment and releases
+
+| What | Where | When |
+| --- | --- | --- |
+| **CI** | `.github/workflows/ci.yml` runs `node tools/check.mjs`: the game script and tools parse, the dialog block is valid, every radio line used by the game exists and has its voice file | every push and pull request to `main` |
+| **Deployment** | GitHub Pages, configured as *deploy from branch* (`main`, root). GitHub builds and publishes the site itself (`pages-build-deployment`); there is no deployment workflow in the repository | every push to `main` |
+| **Releases** | `.github/workflows/release.yml` re-runs the checks and publishes a GitHub release with generated notes | pushing a `vX.Y.Z` tag (e.g. `git tag v1.0.0 && git push origin v1.0.0`) |
+
+The CI only checks; publishing the playable site is done by GitHub Pages, independently of releases. Voice files are generated locally (see *Radio voices*), never in CI, because generation needs the ElevenLabs key.
+
+## License
+
+Code under the [MIT license](LICENSE). The voice files in `voices/` were generated with ElevenLabs and remain subject to ElevenLabs' terms for the plan they were generated with (attribution, non-commercial use).
+
 ## Credits
 
 Radio voices generated with [ElevenLabs](https://elevenlabs.io). 3D rendering by [Three.js](https://threejs.org).
