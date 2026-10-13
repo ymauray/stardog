@@ -1,0 +1,43 @@
+name: Bug report
+description: Something in the game doesn't work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you saw, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to reproduce
+      description: Mission, moment or boss phase, and what you did. A URL such as `?level=2&t=86` helps.
+      placeholder: |
+        1. Start mission 1
+        2. ...
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and OS
+      placeholder: Chrome 140 on macOS 26
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did you play?
+      options:
+        - Online (ymauray.github.io/stardog)
+        - Locally (python3 -m http.server)
+    validations:
+      required: true
+  - type: textarea
+    id: console
+    attributes:
+      label: Console errors
+      description: Any error from the browser's developer console.
+      render: text
